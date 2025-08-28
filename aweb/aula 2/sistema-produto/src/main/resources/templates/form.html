@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Formulário de Aluno</title>
+  </head>
+  <body>
+    <h1>Aluno</h1>
+    <form th:action="@{/alunos/save}" th:object="${aluno}" method="post">
+      <input type="hidden" th:field="*{id}" />
+      <div>
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" />
+        <span th:errors="*{nome}"></span>
+      </div>
+      <div>
+        <label>Idade:</label>
+        <input type="number" th:field="*{idade}" />
+        <span th:errors="*{idade}"></span>
+      </div>
+      <div>
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" />
+      </div>
+      <div>
+        <label>Curso:</label>
+        <input type="text" th:field="*{curso}" />
+      </div>
+      <button type="submit">Salvar</button>
+    </form>
+  </body>
+</html>
