@@ -23,22 +23,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="aluno : ${alunos}">
-                <td th:text="${aluno.id}"></td>
-                <td th:text="${aluno.nome}"></td>
-                <td th:text="${aluno.email}"></td>
-                <td th:text="${aluno.idade}"></td>
-                <td>
-                    <a th:href="@{/alunos/edit/{id}(id=${aluno.id})}">Editar</a>
-                    <a th:href="@{/alunos/delete/{id}(id=${aluno.id})}" 
-                       th:onclick="'return confirm(\'Tem certeza que deseja excluir o aluno ' + ${aluno.nome} + '?\');'">Excluir</a>
-                </td>
-            </tr>
+            <tr th:each="aluno : ${alunos != null ? alunos : {}}"> 
+    <td th:text="${aluno.id}"></td>
+    <td th:text="${aluno.nome}"></td>
+    <td th:text="${aluno.email}"></td>
+    <td th:text="${aluno.idade}"></td>
+    <td>
+        <a th:href="@{/alunos/edit/{id}(id=${aluno.id})}">Editar</a>
+        <a th:href="@{/alunos/delete/{id}(id=${aluno.id})}" 
+           th:onclick="'return confirm(\'Tem certeza que deseja excluir o aluno ' + ${aluno.nome} + '?\');'">Excluir</a>
+    </td>
+</tr>
+
         </tbody>
     </table>
     
-    <div th:if="${#lists.isEmpty(alunos)}">
-        <p>Nenhum aluno cadastrado.</p>
-    </div>
+    <div th:if="${alunos == null or #lists.isEmpty(alunos)}">
+    <p>Nenhum aluno cadastrado.</p>
+</div>
+
+
 </body>
 </html>

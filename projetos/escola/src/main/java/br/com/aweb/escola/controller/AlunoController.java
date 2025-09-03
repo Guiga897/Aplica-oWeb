@@ -1,6 +1,9 @@
 package br.com.aweb.escola.controller;
 
 import jakarta.validation.Valid;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,10 +28,12 @@ public class AlunoController {
     }
 
     @GetMapping("/alunos")
-    public String list(Model model) {
-        model.addAttribute("alunos", alunoService.listAll());
-        return "list";
-    }
+public String list(Model model) {
+    var alunos = alunoService.listAll();
+    System.out.println("Alunos encontrados: " + alunos); // log
+    model.addAttribute("alunos", alunos != null ? alunos : List.of());
+    return "list";
+}
 
     @GetMapping("/alunos/new")
     public String newAluno(Model model) {

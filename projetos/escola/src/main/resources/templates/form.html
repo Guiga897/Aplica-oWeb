@@ -5,9 +5,15 @@
     <title>Formulário Aluno</title>
 </head>
 <body>
-    <h1 th:text="${aluno.id} != null ? 'Editar Aluno' : 'Novo Aluno'">Cadastro de Aluno</h1>
+   <h1 th:if="${aluno.id != null}" th:text="'Editar Aluno'">Novo Aluno</h1>
+    <h1 th:unless="${aluno.id != null}" th:text="'Novo Aluno'">Novo Aluno</h1>
+
+
     
-    <form th:object="${aluno}" th:action="@{/alunos}" method="post">
+   <form th:object="${aluno}" th:action="@{/alunos/save}" method="post">
+
+
+
         <input type="hidden" th:field="*{id}">
         
         <div>
