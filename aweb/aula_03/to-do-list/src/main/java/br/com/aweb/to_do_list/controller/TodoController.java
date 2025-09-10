@@ -1,6 +1,5 @@
 package br.com.aweb.to_do_list.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import br.com.aweb.to_do_list.models.Todo;
